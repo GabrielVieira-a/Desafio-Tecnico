@@ -71,5 +71,5 @@ A aplicação utiliza um modelo relacional para garantir a integridade dos dados
 
 ---
 
-**Desenvolvido por**: [Gabriel Vieira]  
+**Desenvolvido por**: Gabriel Vieira  
 **Objetivo**: Desafio Técnico para Desenvolvedor Fullstack.
