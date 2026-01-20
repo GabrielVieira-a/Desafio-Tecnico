@@ -31,4 +31,14 @@ class ColaboradorController extends Controller
     {
         return response()->json(Colaborador::all(), 200);
     }
+
+    public function destroy($id)
+{
+    // Procura o colaborador pelo ID e deleta
+    $colaborador = \App\Models\Colaborador::findOrFail($id);
+    $colaborador->delete();
+
+    return response()->json(['message' => 'Colaborador removido com sucesso!']);
+}
+
 }

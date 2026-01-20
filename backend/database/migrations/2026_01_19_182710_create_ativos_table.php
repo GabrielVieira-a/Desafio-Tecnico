@@ -14,9 +14,21 @@ return new class extends Migration
         Schema::create('ativos', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
+            $table->string('tipo'); // Campo necessário conforme seu AtivoController
             $table->string('numero_serie')->unique();
-            $table->foreignId('produto_id')->constrained('produtos');
-            $table->string('status')->default('disponivel');
+            
+            // Relacionamento com Produtos (Obrigatório por requisito)
+            $table->foreignId('produto_id')
+                  ->constrained('produtos')
+                  ->onDelete('cascade');
+
+            // Relacionamento com Colaboradores (Permite ser nulo se estiver no estoque)
+            $table->foreignId('colaborador_id')
+                  ->nullable() 
+                  ->constrained('colaboradores')
+                  ->onDelete('set null'); 
+
+            $table->string('status')->default('disponivel'); 
             $table->timestamps();
         });
     }
